@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Todo extends React.Component {
+class ToDo extends React.Component {
     render() {
         return (
             <li> A todo will go here </li>
