@@ -1,11 +1,16 @@
 import React from 'react';
 
 class ToDo extends React.Component {
+    
     render() {
+        // obj. destructuring to avoid typing
+        // 'this.props' all over
+        const { isCompleted, description } = this.props;
+        
         return (
             <li>
-                <input type="checkbox" checked={ this.props.isCompleted } />
-                <span>{ this.props.description }</span>
+                <input type="checkbox" checked={ isCompleted } />
+                <span>{ description }</span>
             </li>
         );
     }
