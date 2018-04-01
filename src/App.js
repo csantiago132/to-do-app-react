@@ -19,7 +19,11 @@ class App extends Component {
       <div className="App">
         <ul>
           {this.state.todos.map((todo, i) => (
-              <ToDo key={i} />
+              <ToDo 
+                key={i} 
+                description={ todo.description } 
+                isCompleted={ todo.isCompleted } 
+              />
             )
           )}
         </ul>
