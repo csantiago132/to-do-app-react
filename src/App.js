@@ -10,12 +10,29 @@ class App extends Component {
          { description: 'Walk the cat', isCompleted: true },
          { description: 'Throw the dishes away', isCompleted: false },
          { description: 'Buy new dishes', isCompleted: false }
-       ]
+       ],
+       newTodoDescription: ''
      };
+  }
+  
+  handleChange(e) {
+    this.setState({ 
+      newTodoDescription: e.target.value 
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    
+    const newTodo = { 
+      description: this.state.newTodoDescription, 
+      isCompleted: false 
+    };
+    
+    this.setState({ 
+      todos: [...this.state.todos, newTodo] 
+    });
+    // for testing functionality
     console.log('handleSubmit called');
   }
 
@@ -45,7 +62,11 @@ class App extends Component {
         </ul>
         
         <form onSubmit={ (e) => this.handleSubmit(e) }>
-          <input type="text" />
+          <input 
+            type="text" 
+            value={ this.state.newTodoDescription }
+            onChange={ (e) => this.handleChange(e) }
+          />
           <input type="submit" />
         </form>
       </div>
