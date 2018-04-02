@@ -54,6 +54,25 @@ class App extends Component {
     console.log('toggleComplete executed');
   }
 
+  removeToDo(index) {
+    // making a copy like toggleComplete method
+    const todos = this.state.todos.slice();
+
+    // saving new array here
+    const todo = todos[index];
+
+    this.setState({
+        // filtering array from const todo
+        // passing index as param in function
+        // returns the new todo without the index
+        // which we are using on the map function in the
+        // render method
+        todos: this.state.todos.filter(index => todo !== index)
+    });
+    // to test functionality
+    console.log('removeToDo executed');
+  }
+
   render() {
     return (
       <div className="App">
@@ -63,7 +82,8 @@ class App extends Component {
                 key={i} 
                 description={ todo.description } 
                 isCompleted={ todo.isCompleted }
-                toggleComplete={ () => this.toggleComplete(i) } 
+                toggleComplete={ () => this.toggleComplete(i) }
+                removeToDo={ () => this.removeToDo(i) } 
               />
             )
           )}
