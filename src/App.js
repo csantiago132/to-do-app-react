@@ -14,6 +14,11 @@ class App extends Component {
      };
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('handleSubmit called');
+  }
+
   toggleComplete(index) {
     // making a copy to not mutate directly the state
     const todos = this.state.todos.slice();
@@ -38,6 +43,11 @@ class App extends Component {
             )
           )}
         </ul>
+        
+        <form onSubmit={ (e) => this.handleSubmit(e) }>
+          <input type="text" />
+          <input type="submit" />
+        </form>
       </div>
     );
   }
