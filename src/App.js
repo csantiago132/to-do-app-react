@@ -14,6 +14,10 @@ class App extends Component {
      };
   }
 
+  toggleComplete() {
+    console.log('toggleComplete executed');
+  }
+
   render() {
     return (
       <div className="App">
