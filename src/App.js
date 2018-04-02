@@ -14,7 +14,13 @@ class App extends Component {
      };
   }
 
-  toggleComplete() {
+  toggleComplete(index) {
+    // making a copy to not mutate directly the state
+    const todos = this.state.todos.slice();
+    const todo = todos[index];
+    todo.isCompleted = todo.isCompleted ? false : true;
+    this.setState({ todos: todos });
+    // to test functionality
     console.log('toggleComplete executed');
   }
 
@@ -26,7 +32,8 @@ class App extends Component {
               <ToDo 
                 key={i} 
                 description={ todo.description } 
-                isCompleted={ todo.isCompleted } 
+                isCompleted={ todo.isCompleted }
+                toggleComplete={ () => this.toggleComplete(i) } 
               />
             )
           )}
