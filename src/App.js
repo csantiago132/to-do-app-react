@@ -6,13 +6,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       todos: [
-         { description: 'Walk the cat', isCompleted: true },
-         { description: 'Throw the dishes away', isCompleted: false },
-         { description: 'Buy new dishes', isCompleted: false }
-       ],
-       newTodoDescription: ''
-     };
+      todos: [
+        { description: 'Walk the cat', isCompleted: true },
+        { description: 'Throw the dishes away', isCompleted: false },
+        { description: 'Buy new dishes', isCompleted: false }
+      ],
+      newTodoDescription: ''
+    };
   }
   
   handleChange(e) {
@@ -25,6 +25,7 @@ class App extends Component {
     e.preventDefault();
     
     if (!this.state.newTodoDescription) { return }
+    
     const newTodo = { 
       description: this.state.newTodoDescription, 
       isCompleted: false 
@@ -41,9 +42,14 @@ class App extends Component {
   toggleComplete(index) {
     // making a copy to not mutate directly the state
     const todos = this.state.todos.slice();
+    
     const todo = todos[index];
+    
     todo.isCompleted = todo.isCompleted ? false : true;
-    this.setState({ todos: todos });
+    
+    this.setState({ 
+      todos: todos 
+    });
     // to test functionality
     console.log('toggleComplete executed');
   }
